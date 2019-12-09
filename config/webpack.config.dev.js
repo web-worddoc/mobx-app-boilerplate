@@ -107,15 +107,11 @@ module.exports = ( env, { mode: MODE } ) => ({
         modules: [ paths.src, 'node_modules' ],
         alias: {
             "@assets": path.resolve(paths.src, 'assets'),
-            "@constants": path.resolve(paths.src, 'constants'),
-            "@contexts": path.resolve(paths.src, 'contexts'),
             "@features": path.resolve(paths.src, 'features'),
-            "@locale": path.resolve(paths.src, 'locale'),
-            "@models": path.resolve(paths.src, 'models'),
+            "@core": path.resolve(paths.src, 'core'),
+            "@ui": path.resolve(paths.src, 'ui'),
             "@pages": path.resolve(paths.src, 'pages'),
-            "@services": path.resolve(paths.src, 'services'),
-            "@shared": path.resolve(paths.src, 'shared'),
-            "@utils": path.resolve(paths.src, 'utils'),
+            "@lib": path.resolve(paths.src, 'lib'),
         }
     },
     devServer: devServer({ MODE })
