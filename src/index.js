@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { AppModel } from '@models';
-import App from 'App';
+import { AuthModel as Auth } from '@features/Auth';
+import { SessionModel as Session } from '@features/Session';
+import { LanguageModel as Language } from '@features/Language';
+import { App } from 'App';
 import * as serviceWorker from './serviceWorker';
 
 
 const models = {
-    App: AppModel,
+    Auth,
+    Session,
+    Language,
 };
 
 ReactDOM.render((

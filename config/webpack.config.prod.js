@@ -13,11 +13,11 @@ const paths = require('./paths').prod;
 module.exports = (env, { mode: MODE }) => ({
     mode: MODE || 'production',
     devtool: 'cheap-module-source-map',
-    entry: paths.src,
+    entry: ['@babel/polyfill', paths.src],
     output: {
         filename: 'static/js/bundle.[hash:8].js',
+        publicPath: '/',
         path: paths.build,
-        publicPath: paths.public,
     },
     module: {
         rules: [
@@ -48,15 +48,15 @@ module.exports = (env, { mode: MODE }) => ({
                 test: /\.(png|jpe?g|gif)$/i,
                 loader: 'url-loader?limit=10000',
                 options: {
-                    name: '[name].[hash:8].[ext]'
-                }
+                    name: 'static/media/[name].[hash:8].[ext]',
+                },
             },
             {
                 exclude: [/\.(js|mjs|jsx|ts|tsx|css)$/, /\.html$/, /\.json$/],
                 loader: 'file-loader',
                 options: {
-                    name: '/static/media/[name].[hash:8].[ext]'
-                }
+                    name: 'static/media/[name].[hash:8].[ext]',
+                },
             },
             {
                 test: /\.css$/,
@@ -65,7 +65,7 @@ module.exports = (env, { mode: MODE }) => ({
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             filename: '[name].[hash:8].[ext]',
-                        }
+                        },
                     },
                     'css-loader',
                     {
@@ -77,10 +77,10 @@ module.exports = (env, { mode: MODE }) => ({
                                 require('postcss-preset-env')({
                                     stage: 3,
                                 }),
-                            ]
-                        }
-                    }
-                ]
+                            ],
+                        },
+                    },
+                ],
             },
         ],
     },
@@ -101,7 +101,7 @@ module.exports = (env, { mode: MODE }) => ({
                 minifyJS: true,
                 minifyCSS: true,
                 minifyURLs: true,
-            }
+            },
         }),
         // generates css files based on imported css in js files
         new MiniCssExtractPlugin({
@@ -110,23 +110,19 @@ module.exports = (env, { mode: MODE }) => ({
         }),
         // clones files from selected directory to build directory
         new CopyWebpackPlugin([{
-            from: paths.public
-        }])
+            from: paths.public,
+        }]),
     ],
     resolve: {
         modules: [ paths.src, 'node_modules' ],
         alias: {
-            "@assets": path.resolve(paths.src, 'assets'),
-            "@constants": path.resolve(paths.src, 'constants'),
-            "@contexts": path.resolve(paths.src, 'contexts'),
-            "@features": path.resolve(paths.src, 'features'),
-            "@locale": path.resolve(paths.src, 'locale'),
-            "@models": path.resolve(paths.src, 'models'),
-            "@pages": path.resolve(paths.src, 'pages'),
-            "@services": path.resolve(paths.src, 'services'),
-            "@shared": path.resolve(paths.src, 'shared'),
-            "@utils": path.resolve(paths.src, 'utils'),
-        }
+            '@assets': path.resolve(paths.src, 'assets'),
+            '@features': path.resolve(paths.src, 'features'),
+            '@core': path.resolve(paths.src, 'core'),
+            '@ui': path.resolve(paths.src, 'ui'),
+            '@pages': path.resolve(paths.src, 'pages'),
+            '@lib': path.resolve(paths.src, 'lib'),
+        },
     },
     optimization: {
         minimize: true,
@@ -139,7 +135,7 @@ module.exports = (env, { mode: MODE }) => ({
             }),
             // minifies js
             new TerserPlugin({
-                cache: true
+                cache: true,
             }),
         ],
     },

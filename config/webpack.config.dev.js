@@ -54,21 +54,12 @@ module.exports = ( env, { mode: MODE } ) => ({
                 },
             },
             {
-                // transforms into base64 URIs
-                test: /\.(png|jpe?g|gif)$/i,
-                loader: 'url-loader',
-                options: {
-                    name: '[name].[hash:8].[ext]',
-                    limit: 10000,
-                }
-            },
-            {
                 // Takes a imported file and emits the file into output
                 exclude: [/\.(js|mjs|jsx|ts|tsx|css)$/, /\.html$/, /\.json$/],
                 loader: 'file-loader',
                 options: {
-                    name: '[name].[hash:8].[ext]'
-                }
+                    name: '[name].[hash:8].[ext]',
+                },
             },
             {
                 test: /\.css$/,
@@ -85,9 +76,9 @@ module.exports = ( env, { mode: MODE } ) => ({
                                 require('postcss-preset-env')({
                                     stage: 3,
                                 }),
-                            ]
-                        }
-                    }
+                            ],
+                        },
+                    },
                 ],
             },
         ],
@@ -106,17 +97,13 @@ module.exports = ( env, { mode: MODE } ) => ({
     resolve: {
         modules: [ paths.src, 'node_modules' ],
         alias: {
-            "@assets": path.resolve(paths.src, 'assets'),
-            "@constants": path.resolve(paths.src, 'constants'),
-            "@contexts": path.resolve(paths.src, 'contexts'),
-            "@features": path.resolve(paths.src, 'features'),
-            "@locale": path.resolve(paths.src, 'locale'),
-            "@models": path.resolve(paths.src, 'models'),
-            "@pages": path.resolve(paths.src, 'pages'),
-            "@services": path.resolve(paths.src, 'services'),
-            "@shared": path.resolve(paths.src, 'shared'),
-            "@utils": path.resolve(paths.src, 'utils'),
-        }
+            '@assets': path.resolve(paths.src, 'assets'),
+            '@features': path.resolve(paths.src, 'features'),
+            '@core': path.resolve(paths.src, 'core'),
+            '@ui': path.resolve(paths.src, 'ui'),
+            '@pages': path.resolve(paths.src, 'pages'),
+            '@lib': path.resolve(paths.src, 'lib'),
+        },
     },
     devServer: devServer({ MODE })
 });

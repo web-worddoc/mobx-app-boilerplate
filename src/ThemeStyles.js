@@ -1,38 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
 
-import gilroyLightWoff from '@assets/fonts/Gilroy-Light.woff';
-import gilroyLightWoff2 from '@assets/fonts/Gilroy-Light.woff2';
-import gilroyLightTtf from '@assets/fonts/Gilroy-Light.ttf';
-
-import gilroyUltraLightWoff from '@assets/fonts/Gilroy-UltraLight.woff';
-import gilroyUltraLightWoff2 from '@assets/fonts/Gilroy-UltraLight.woff2';
-import gilroyUltraLightTtf from '@assets/fonts/Gilroy-UltraLight.ttf';
-
-import gilroyRegularWoff from '@assets/fonts/Gilroy-Regular.woff';
-import gilroyRegularWoff2 from '@assets/fonts/Gilroy-Regular.woff2';
-import gilroyRegularTtf from '@assets/fonts/Gilroy-Regular.ttf';
-
-import gilroyMediumWoff from '@assets/fonts/Gilroy-Medium.woff';
-import gilroyMediumWoff2 from '@assets/fonts/Gilroy-Medium.woff2';
-import gilroyMediumTtf from '@assets/fonts/Gilroy-Medium.ttf';
-
-import gilroyBoldWoff from '@assets/fonts/Gilroy-Bold.woff';
-import gilroyBoldWoff2 from '@assets/fonts/Gilroy-Bold.woff2';
-import gilroyBoldTtf from '@assets/fonts/Gilroy-Bold.ttf';
-
-import gilroyBlackWoff from '@assets/fonts/Gilroy-Black.woff';
-import gilroyBlackWoff2 from '@assets/fonts/Gilroy-Black.woff2';
-import gilroyBlackTtf from '@assets/fonts/Gilroy-Black.ttf';
-
 
 export const ThemeStyles = createGlobalStyle`
   :root {
     --font-family: 'gilroy', 'Trebuchet MS', 'Tahoma', 'Arial', 'sans-serif';
     --font: normal 500 16px/24px var(--font-family);
-    --color-primary-1: #3172FD;
+    --color-primary-1: #5466EF;
     --color-primary-1-tint-1: rgba(14,14,14,.3);
     --color-secondary-1: #0E0E0E;
     --color-secondary-1-tint-1: rgba(14,14,14,.3);
+    --color-error: rgb(242, 109, 109);
+    --color-disabled: #BABABA;
   }
 
   body {
@@ -46,11 +24,11 @@ export const ThemeStyles = createGlobalStyle`
   }
 
   h1 {
-    font-size: 38px;
-    font-weight: 500;
+    font-size: 24px;
+    font-weight: 400;
     line-height: 38px;
     letter-spacing: 1px;
-    margin-bottom: 32px;
+    margin-bottom: 18px;
     white-space: nowrap;
   }
 
@@ -111,6 +89,10 @@ export const ThemeStyles = createGlobalStyle`
     font: small-caption;
     font-size: 21px;
     letter-spacing: 2px;
+    padding-top: 0;
+    &::placeholder {
+      font: var(--font);
+    }
   }
 
   input::placeholder, textarea::placeholder {
@@ -121,10 +103,14 @@ export const ThemeStyles = createGlobalStyle`
     color: var(--color-secondary-1-tint-1);
   }
 
+  th {
+    font-weight: 500;
+  }
+
   section.section-1,
   section.section-2,
   section.section-3 {
-    &.no-offset {
+    &.no-margin {
         margin-bottom: unset;
     }
     &.no-padding {
@@ -133,12 +119,12 @@ export const ThemeStyles = createGlobalStyle`
   }
 
   .section-1 {
-    margin: 0 auto 80px;
-    padding: 60px 43px;
+    margin: 0 auto 50px;
     height: auto;
     background: white;
-    box-shadow: 0 8px 21px 0 rgba(0, 0, 0, 0.05);
-    border-radius: 15px;
+    box-shadow: 0px 15px 20px rgba(150, 150, 187, 0.09);
+    border-radius: 13px;
+    overflow: hidden;
   }
 
   .section-2 {
@@ -148,66 +134,6 @@ export const ThemeStyles = createGlobalStyle`
   }
   .section-3 {
     padding: 40px 40px 60px;
-    margin-bottom: 60px;
-  }
-
-  @font-face {
-    font-family: 'gilroy';
-    src: url(${gilroyLightWoff2}) format('woff2'),
-        url(${gilroyLightWoff}) format('woff'),
-        url(${gilroyLightTtf}) format('truetype');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'gilroy';
-    src: url(${gilroyUltraLightWoff2}) format('woff2'),
-        url(${gilroyUltraLightWoff}) format('woff'),
-        url(${gilroyUltraLightTtf}) format('truetype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'gilroy';
-    src: url(${gilroyRegularWoff2}) format('woff2'),
-        url(${gilroyRegularWoff}) format('woff'),
-        url(${gilroyRegularTtf}) format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'gilroy';
-    src: url(${gilroyMediumWoff2}) format('woff2'),
-        url(${gilroyMediumWoff}) format('woff'),
-        url(${gilroyMediumTtf}) format('truetype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'gilroy';
-    src: url(${gilroyBoldWoff2}) format('woff2'),
-        url(${gilroyBoldWoff}) format('woff'),
-        url(${gilroyBoldTtf}) format('truetype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'gilroy';
-    src: url(${gilroyBlackWoff2}) format('woff2'),
-        url(${gilroyBlackWoff}) format('woff'),
-        url(${gilroyBlackTtf}) format('truetype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
+    margin-bottom: 20px;
   }
 `;

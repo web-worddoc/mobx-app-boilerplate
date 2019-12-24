@@ -34,12 +34,14 @@
         "quotes": ["error", "single"],
         "object-curly-spacing": ["error", "always"],
         "no-console": "off",
-        "react/no-unused-prop-types": "error",
-        "react/no-unused-state": "error",
+        "react/no-unused-prop-types": "warn",
+        "react/no-unused-state": "warn",
         "no-trailing-spaces": "error",
         "lines-between-class-members": ["error", "always"],
-        "comma-dangle": ["error", "always-multiline"],
+        "comma-dangle": ["warn", "only-multiline"],
         "semi": ["error", "always"],
+        "no-useless-catch": "off",
+        "no-unused-vars": "warn",
         "import/newline-after-import": [
             "error",
             {

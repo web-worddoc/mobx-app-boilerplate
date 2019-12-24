@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { media } from '@constants';
+import { media } from '@core';
 
 
 export const GlobalStyles = createGlobalStyle`

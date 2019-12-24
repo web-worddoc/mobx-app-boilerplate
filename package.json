@@ -60,6 +60,7 @@
     "moment": "^2.24.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-router-config": "^5.1.1",
     "react-router-dom": "^5.1.2",
     "styled-components": "^4.4.1",
     "superagent": "^5.1.0",
