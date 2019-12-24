@@ -18,10 +18,10 @@ module.exports = ({ MODE }) => {
         quiet: true,
         historyApiFallback: true,
         proxy: !env.PROXY ? undefined : {
-            '/': {
+            '/api': {
                 target: env.PROXY,
                 secure: false,
-                changeOrigin: true
+                changeOrigin: true,
             },
         },
         headers: {

@@ -8,9 +8,9 @@ module.exports = {
         env: resolvePath('../.env'),
     },
     prod: {
-        src: resolvePath('../src/'),
-        public: resolvePath('../public/'),
-        build: resolvePath('../build/'),
-        env: resolvePath('../.env'),
+        src: resolvePath('./../src/'),
+        public: resolvePath('./../public/'),
+        build: resolvePath('./../build/'),
+        env: resolvePath('./../.env'),
     }
 };

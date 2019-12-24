@@ -45,13 +45,6 @@ module.exports = (env, { mode: MODE }) => ({
                 },
             },
             {
-                test: /\.(png|jpe?g|gif)$/i,
-                loader: 'url-loader?limit=10000',
-                options: {
-                    name: 'static/media/[name].[hash:8].[ext]',
-                },
-            },
-            {
                 exclude: [/\.(js|mjs|jsx|ts|tsx|css)$/, /\.html$/, /\.json$/],
                 loader: 'file-loader',
                 options: {
